@@ -22,6 +22,21 @@ if os.path.exists(src_private):
     shutil.copy(src_private, dst_privatekey)
     shutil.copy(src_public, dst_publickey)
 
-#create the file through sys command
+#Make sure that the Dockerfile exists
+if os.path.isfile("Dockerfile"):
+    print ("Found the Dockerfile...")
+else:
+   print ("Either the Dockerfile is missing or not readable")
+#create a directory called terraform 
+if not os.path.exists("./terraform"):
+   print ("Creating terraform directory...")
+   os.makedirs("terraform")
+else:
+   print ("Could not create terraform directory")
+#copy main.tf to the terrform directory
+if os.path.isfile("main.tf"):
+    print ("Copying main.tf file to the terraform directory")
+    shutil.copy("main.tf", "terraform/main.tf")
+else:
+    print ("Could not find main.tf file")
 
-#insert the content in it
